@@ -1,0 +1,32 @@
+.bottom_nav {
+  margin-bottom: 0;
+  position: fixed;
+  bottom: 0;
+  /* background-color: #808080; */
+  background-color: #121212;
+  /* background-color: whitesmoke; */
+  width: 100%;
+}
+.bottom_div_Links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottom_div_Links a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.bottom_div_Links a:hover {
+  color: #42a5f5;
+}
+.bottom_div_Links a:active {
+  color: #42a5f5;
+}
+/* Model filter */
+.filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

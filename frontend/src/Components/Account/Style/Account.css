@@ -1,0 +1,30 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.avator {
+  display: flex;
+  justify-content: center;
+  z-index: -1;
+}
+.photo_icon {
+  margin-top: -50px;
+  margin-right: -90px;
+  z-index: 1;
+}
+.label {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.profile input {
+  display: none;
+}
+.username {
+  display: flex;
+  justify-content: center;
+}
+.editAccount {
+  display: flex;
+  justify-content: center;
+}

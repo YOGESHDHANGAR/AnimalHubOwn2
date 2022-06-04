@@ -1,0 +1,49 @@
+.imagesContainer {
+  display: flex;
+  justify-content: center;
+}
+.previewimg {
+  object-fit: cover;
+  /* width: 17vw; */
+  /* height: 23vh; */
+  width: 100%;
+  height: 100%;
+}
+
+.eachImage {
+  width: 20vw;
+  margin: 8px;
+  object-fit: cover;
+  border-style: dotted;
+  border-color: gray;
+}
+
+.eachImage > input {
+  display: none;
+}
+.cancle_image {
+  justify-self: start;
+}
+
+.before_input {
+  background-color: white;
+  opacity: 0.4;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 600px) {
+  .imagesContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  .previewimg {
+    object-fit: fill;
+  }
+  .targetImg {
+  }
+  .eachImage {
+    width: 38vw;
+  }
+}

@@ -1,0 +1,12 @@
+.form_div {
+  border: solid 2px #a17bfa;
+  max-height: 500px;
+  overflow-y: scroll;
+  /* scrollbar-color: #4285f4 #f5f5f5; */
+  scrollbar-color: #78a7f4;
+  scrollbar-width: 5px;
+  background-color: rgb(247, 245, 245);
+}
+.btn_submit {
+  border-color: black;
+}

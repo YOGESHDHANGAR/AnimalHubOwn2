@@ -1,0 +1,34 @@
+.logo_div {
+  background-color: black;
+  overflow-x: hidden;
+  width: 100%;
+}
+/* .logo_div_button {
+  display: flex;
+} */
+/* .logo_div_button button {
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-color: black;
+  justify-content: flex-end;
+
+  text-transform: uppercase;
+  font-weight: black;
+}  */
+.logo_div_Links {
+  display: flex;
+}
+
+.logo_div_Links a {
+  color: white;
+  /* margin-left: 0.5em; */
+  /* margin-right: 0.5em; */
+  margin-top: 0.5em;
+}
+.profile {
+  margin-left: auto;
+  /* margin-right: 1em; */
+  margin-top: 0.5em;
+}

@@ -1,0 +1,51 @@
+/*by Yogesh*/
+::-webkit-scrollbar {
+  display: none;
+}
+
+.card_div {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.card_div_mdb {
+  border-top-left-radius: calc(1rem - 1px);
+  border-bottom-left-radius: calc(1rem - 1px);
+  border-top-right-radius: calc(1rem - 1px);
+  border-bottom-right-radius: calc(1rem - 1px);
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
+}
+.card_titile {
+  /* margin-left: 1em; */
+  /* margin-top: 1em; */
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.card_div_text {
+  font-size: 1.3em;
+}
+.card_div_text p {
+  margin-block-start: 0em !important;
+}
+.card_div_image {
+  border-top-left-radius: calc(1rem - 1px);
+  border-bottom-left-radius: calc(1rem - 1px);
+  border-top-right-radius: calc(1rem - 1px);
+  border-bottom-right-radius: calc(1rem - 1px);
+  /* margin-bottom: 1em; */
+}
+/* .card_botton_div h2 {
+  display: inline;
+} */
+.card_bottons_div {
+  display: flex;
+  flex-direction: row;
+}
+/* .card_botton {
+  margin-left: 1em;
+  margin-right: 1em;
+} */

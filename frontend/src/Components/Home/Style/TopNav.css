@@ -1,0 +1,22 @@
+.top_nav_btn button {
+  margin-left: 0.5em;
+  font-weight: bold;
+  color: black;
+  letter-spacing: 1px;
+  font-size: large;
+}
+.chose_div {
+  /* width: 100%; */
+  /* border: 2px solid red; */
+  max-height: 200px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.chose_div :hover {
+  color: blue;
+}
+.animal_select_div {
+  max-height: 200px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}

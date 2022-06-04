@@ -1,0 +1,28 @@
+/* .buttom_button {
+  display: flex;
+  justify-content: space-around;
+} */
+/* .buttom_button button {
+  maring-left: 1em;
+  margin-right: 1em;
+} */
+
+/* .bottom_nav {
+  margin-top: 0;
+  height: 0;
+} */
+
+/* .top_nav_button {
+  display: flex;
+  justify-content: space-around;
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,100;1,300;1,400;1,500&display=swap");
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: rgb(245, 244, 244);
+}
+* {
+  padding: 0px;
+  margin: 0px;
+}

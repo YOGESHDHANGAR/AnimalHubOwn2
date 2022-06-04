@@ -1,0 +1,25 @@
+.signup_container {
+  box-shadow: 0 5px 10px rgba(58, 81, 173, 0.05),
+    0 15px 40px rgba(19, 48, 165, 0.2);
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+border-top-left-radius: calc(1rem - 2px);
+  border-top-right-radius: calc(1rem - 2px);
+  border-bottom-left-radius: calc(1rem - 2px);
+  border-bottom-right-radius: calc(1rem - 2px);
+  /* background-color: whitesmoke; */
+}
+.heading h1 {
+  text-shadow: 2px 2px 8px #2c2929;
+  padding-top: 0.5em;
+}
+
+@media (max-width: 1000px) {
+  .signup_container {
+    width: 90%;
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+}
