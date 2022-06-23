@@ -67,7 +67,6 @@ const SignUp = () => {
     captch();
     handleShow();
     const phoneNumber = "+91" + number;
-    console.log(phoneNumber);
     const appVerifier = window.recaptchaVerifier;
     signInWithPhoneNumber(auth, phoneNumber, appVerifier)
       .then((confirmationResult) => {

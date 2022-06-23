@@ -8,7 +8,7 @@ const axios = require("axios");
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
   const { name, mobileNumber, role } = req.body;
-  console.log(req.body);
+  console.log("new User registerd:" + req.body);
 
   const user = await User.create({
     name,
@@ -56,7 +56,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   try {
     await sendEmail({
       email: user.email,
-      subject: `Ecommerce Password Recovery`,
+      subject: `AnimalHub Password Recovery`,
       message,
     });
 
@@ -152,10 +152,10 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     newUserData.longitude = req.body.longitude;
     newUserData.latitude = req.body.latitude;
 
-    console.log("yes");
-
     const lng = req.body.longitude;
     const lat = req.body.latitude;
+
+    console.log("use location found:" + "lng:" + lng + "::" + "lat:" + lat);
 
     const { data } = await axios(
       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`
@@ -185,7 +185,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     };
   }
 
-  console.log(newUserData);
+  console.log("new use created:" + newUserData);
 
   const user = await User.findByIdAndUpdate(req.user._id, newUserData, {
     new: true,

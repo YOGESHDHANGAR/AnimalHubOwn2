@@ -43,7 +43,7 @@ exports.createAnimal = catchAsyncErrors(async (req, res, next) => {
 
   const animal = await Animal.create(req.body);
 
-  console.log("animalatback" + animal);
+  console.log("created new animal" + animal);
 
   res.status(201).json({
     success: true,
@@ -55,116 +55,118 @@ exports.createAnimal = catchAsyncErrors(async (req, res, next) => {
 exports.getAllAnimals = catchAsyncErrors(async (req, res, next) => {
   //intialiazing default query array
   const arrQuery = [
-    // {
-    //   $sort: {
-    //     publishedOn: 1,
-    //   },
-    // },
-    // {
-    //   $sort: {
-    //     num: 1,
-    //   },
-    // },
+    {
+      $sort: {
+        publishedOn: 1,
+      },
+    },
+    {
+      $sort: {
+        num: 1,
+      },
+    },
   ];
 
+  // console.log("req.query:" + req.query);
+
   //checking if user is logged in or not
-  if (req.query.id) {
-    const user = await User.findById(req.query.id);
-    centerPoint = { userLng: user.longitude, userLat: user.lattitude };
-  }
+  // if (req.query.id) {
+  //   const user = await User.findById(req.query.id);
+  //   centerPoint = { userLng: user.longitude, userLat: user.lattitude };
+  // }
 
   //if radius query is been asked
-  if (req.query.radius) {
-    console.log("radius:" + req.query.radius);
-    defaultRadius = req.query.radius;
-  }
+  // if (req.query.radius) {
+  //   console.log("radius:" + req.query.radius);
+  //   defaultRadius = req.query.radius;
+  // }
 
-  const copyLngArr = [...lngArr];
-  const copyLatArr = [...latArr];
+  // const copyLngArr = [...lngArr];
+  // const copyLatArr = [...latArr];
 
-  let lngRight = centerPoint.userLng + copyLngArr[defaultRadius - 1];
-  let lngLeft = centerPoint.userLng - copyLngArr[defaultRadius - 1];
-  let latRight = centerPoint.userLat + copyLatArr[defaultRadius - 1];
-  let latLeft = centerPoint.userLat - copyLatArr[defaultRadius - 1];
+  // let lngRight = centerPoint.userLng + copyLngArr[defaultRadius - 1];
+  // let lngLeft = centerPoint.userLng - copyLngArr[defaultRadius - 1];
+  // let latRight = centerPoint.userLat + copyLatArr[defaultRadius - 1];
+  // let latLeft = centerPoint.userLat - copyLatArr[defaultRadius - 1];
 
   //if milk querry is there
-  if (req.query.milk) {
-    console.log("milk:" + req.query.milk);
-    var value = req.query.milk;
-    arrQuery.push({
-      $match: {
-        milkCurrent: { $gte: parseInt(value - 5), $lte: parseInt(value) },
-      },
-    });
-  }
+  // if (req.query.milk) {
+  //   console.log("milk:" + req.query.milk);
+  //   var value = req.query.milk;
+  //   arrQuery.push({
+  //     $match: {
+  //       milkCurrent: { $gte: parseInt(value - 5), $lte: parseInt(value) },
+  //     },
+  //   });
+  // }
 
   // if animalCategory query is there
-  if (req.query.animalCategory) {
-    console.log("animalCategory:" + req.query.animalCategory);
-    const copyAnimalCategoryArr = [...animalCategoryArr];
-    const index = req.query.animalCategory;
-    if (index >= 0 && index <= 3) {
-      arrQuery.push({
-        $match: {
-          animalCategory: copyAnimalCategoryArr[index],
-        },
-      });
-    } else {
-      arrQuery.push({
-        $match: {
-          animalCategory: {
-            $in: [
-              "goat",
-              "maleGoat",
-              "sheep",
-              "maleSheep",
-              "camel",
-              "camelFemale",
-              "horse",
-              "femaleHorse",
-            ],
-          },
-        },
-      });
-    }
-  }
+  // if (req.query.animalCategory) {
+  //   console.log("animalCategory:" + req.query.animalCategory);
+  //   const copyAnimalCategoryArr = [...animalCategoryArr];
+  //   const index = req.query.animalCategory;
+  //   if (index >= 0 && index <= 3) {
+  //     arrQuery.push({
+  //       $match: {
+  //         animalCategory: copyAnimalCategoryArr[index],
+  //       },
+  //     });
+  //   } else {
+  //     arrQuery.push({
+  //       $match: {
+  //         animalCategory: {
+  //           $in: [
+  //             "goat",
+  //             "maleGoat",
+  //             "sheep",
+  //             "maleSheep",
+  //             "camel",
+  //             "camelFemale",
+  //             "horse",
+  //             "femaleHorse",
+  //           ],
+  //         },
+  //       },
+  //     });
+  //   }
+  // }
 
   //if breed query is there
-  if (req.query.breed) {
-    const copyBreedArr = breedArr;
-    console.log("breedatback" + req.query.breed);
+  // if (req.query.breed) {
+  //   const copyBreedArr = breedArr;
+  //   console.log("breedatback" + req.query.breed);
 
-    let qry = req.query.breed;
-    const queryArr = [];
+  //   let qry = req.query.breed;
+  //   const queryArr = [];
 
-    let i = 0;
-    if (qry.length == 40) {
-      for (i = 0; i < 40; i++) {
-        if (qry.charAt(i) == 1) {
-          queryArr.push(copyBreedArr[i]);
-        }
-      }
-    }
+  //   let i = 0;
+  //   if (qry.length == 40) {
+  //     for (i = 0; i < 40; i++) {
+  //       if (qry.charAt(i) == 1) {
+  //         queryArr.push(copyBreedArr[i]);
+  //       }
+  //     }
+  //   }
 
-    arrQuery.push({
-      $match: {
-        breed: {
-          $in: queryArr,
-        },
-      },
-    });
-  }
+  //   arrQuery.push({
+  //     $match: {
+  //       breed: {
+  //         $in: queryArr,
+  //       },
+  //     },
+  //   });
+  // }
 
   //if rate query is there
-  if (req.query.rate) {
-    console.log("rate:" + req.query.rate);
-    const rate = req.query.rate;
-    arrQuery.push({
-      $match: {
-        rate: { $lte: parseInt(rate) },
-      },
-    });
-  }
+  // if (req.query.rate) {
+  //   console.log("rate:" + req.query.rate);
+  //   const rate = req.query.rate;
+  //   arrQuery.push({
+  //     $match: {
+  //       rate: { $lte: parseInt(rate) },
+  //     },
+  //   });
+  // }
 
   // // narrowing animals along longitude
   // arrQuery.push({
@@ -194,14 +196,14 @@ exports.getAllAnimals = catchAsyncErrors(async (req, res, next) => {
   totalAnimals = totalAnimals[0].animalsCount;
 
   // skipping through pagination
-  if (req.query.currentPage) {
-    console.log("backednpage " + req.query.currentPage);
-  }
+  // if (req.query.currentPage) {
+  //   console.log("page:" + req.query.currentPage);
+  // }
 
-  const currentPage = req.query.currentPage || 1;
-  const skip = resultPerPage * (currentPage - 1);
-  arrQuery.push({ $skip: skip });
-  arrQuery.push({ $limit: resultPerPage });
+  // const currentPage = req.query.currentPage || 1;
+  // const skip = resultPerPage * (currentPage - 1);
+  // arrQuery.push({ $skip: skip });
+  // arrQuery.push({ $limit: resultPerPage });
 
   const animals = await Animal.aggregate(arrQuery);
 
