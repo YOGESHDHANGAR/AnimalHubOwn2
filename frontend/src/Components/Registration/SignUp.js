@@ -19,13 +19,10 @@ import {
   Radio,
   Button,
 } from "@mui/material";
-import { i18n } from "../../Languages/Setups/i18nSetup";
-import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
   const history = useHistory();
-  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [name, setname] = useState("");
   const [number, setnumber] = useState("");
@@ -40,12 +37,7 @@ const SignUp = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  useEffect(() => {
-    i18n.changeLanguage("hi");
-  }, []);
-
   const auth = getAuth(app);
-  auth.languageCode = "it";
 
   const captch = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(
@@ -126,14 +118,14 @@ const SignUp = () => {
         <div className="signup_container container mt-3">
           <form action="">
             <div className="heading text-center mt-4">
-              <h1>{t("userinformation")}</h1>
+              <h1>userinformation</h1>
             </div>
             <div className="" id="sign-in-button"></div>
             <div className="">
               <div className="name mt-3 mb-1 text-center">
                 <TextField
                   id="outlined-basic"
-                  label={t("namelabel")}
+                  label="namelabel"
                   variant="outlined"
                   type="text"
                   name="name"
@@ -145,7 +137,7 @@ const SignUp = () => {
               <div className="mobile mt-3 mb-1 text-center">
                 <TextField
                   id="outlined-basic"
-                  label={t("mobile")}
+                  label="mobile"
                   variant="outlined"
                   type="number"
                   required
@@ -156,7 +148,7 @@ const SignUp = () => {
 
               <div className="usertype text-center mt-2">
                 <FormControl component="fieldset">
-                  <FormLabel component="legend">{t("useroption")}</FormLabel>
+                  <FormLabel component="legend">"useroption"</FormLabel>
                   <RadioGroup
                     aria-label="userType"
                     name="controlled-radio-buttons-group"
@@ -167,13 +159,13 @@ const SignUp = () => {
                       <FormControlLabel
                         value="Agent"
                         control={<Radio />}
-                        label={t("agent")}
+                        label="agent"
                       />
 
                       <FormControlLabel
                         value="user"
                         control={<Radio />}
-                        label={t("user")}
+                        label="user"
                       />
                     </div>
                   </RadioGroup>
@@ -183,7 +175,7 @@ const SignUp = () => {
                     <div className="email">
                       <TextField
                         id="outlined-basic"
-                        label={t("email")}
+                        label="email"
                         variant="outlined"
                         type="email"
                       />

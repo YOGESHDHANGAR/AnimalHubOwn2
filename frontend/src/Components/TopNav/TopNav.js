@@ -184,13 +184,13 @@ const TopNav = () => {
                 <List>
                   <Divider />
                   <div className="items mt-2">
-                    <NavLink to="/doctor" className=" mt-2 mb-2">
+                    {/* <NavLink to="/doctor" className=" mt-2 mb-2">
                       <MedicationIcon className="me-2 ms-2" /> पशु चिकित्सक
-                    </NavLink>
-                    <div onClick={hadleLocation} className=" mt-2 mb-2">
+                    </NavLink> */}
+                    {/* <div onClick={hadleLocation} className=" mt-2 mb-2">
                       <LocationOnIcon className="me-2 ms-2" />
                       {place}
-                    </div>
+                    </div> */}
                   </div>
                 </List>
               </Box>
