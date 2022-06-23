@@ -53,7 +53,33 @@ exports.createAnimal = catchAsyncErrors(async (req, res, next) => {
 
 // Get All Animal
 exports.getAllAnimals = catchAsyncErrors(async (req, res, next) => {
-  const animals = await Animal.find();
+  //intialiazing default query array
+  const arrQuery = [
+    {
+      $sort: {
+        publishedOn: 1,
+      },
+    },
+    {
+      $sort: {
+        num: 1,
+      },
+    },
+  ];
+
+  // skipping through pagination
+  if (req.query.currentPage) {
+    console.log("page:" + req.query.currentPage);
+  }
+
+  const currentPage = req.query.currentPage || 1;
+  const skip = resultPerPage * (currentPage - 1);
+  arrQuery.push({ $skip: skip });
+  arrQuery.push({ $limit: resultPerPage });
+
+  const animals = await Animal.aggregate(arrQuery);
+
+  const totalAnimals = await Animal.count();
 
   res.status(200).json({
     success: true,
