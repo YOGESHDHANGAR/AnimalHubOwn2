@@ -15,6 +15,7 @@ import ReactWhatsapp from "react-whatsapp";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "./Style/Card2.css";
 const Card = (props) => {
+  console.log(props.gender);
   return (
     <div className="card_div ">
       <MDBCard style={{ maxWidth: "90vw" }} className="card_div_mdb2 ">

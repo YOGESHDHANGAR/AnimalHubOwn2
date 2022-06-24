@@ -34,36 +34,6 @@ const TopNav = () => {
   const [state, setstate] = useState(false);
   const toggleDrawer = (open) => setstate(open);
 
-  const hadleLocation = () => {
-    let lng = 0;
-    let lat = 0;
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const myForm = new FormData();
-
-          lng = position.coords.longitude;
-          lat = position.coords.latitude;
-
-          // myForm.set("locationData");
-          myForm.set("longitude", lng);
-          myForm.set("latitude", lat);
-          dispatch(updateProfile(myForm));
-        },
-        (error) => {
-          if (error.PERMISSION_DENIED) {
-            console.log("Error: permission denied  please allow your location");
-          } else {
-            console.log("Other kind of error: " + error);
-          }
-        }
-      );
-    } else {
-      console.log("Geolocation is not supported by this browser");
-    }
-  };
-
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -79,7 +49,6 @@ const TopNav = () => {
   }, [user, loading, error]);
 
   useEffect(() => {
-    console.log("isUpdateds:" + isUpdated);
     if (isUpdated) {
       dispatch(loadUser());
       dispatch({
@@ -92,39 +61,11 @@ const TopNav = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" className="bg-dark">
         <Toolbar>
-          {/* <Typography
-            variant="h6"
-            noWrap
-            // component="div"
-            color='inherit'
-            sx={{ display: { xs: "block", sm: "block" },color:'blue',backgroundColor:'black' }}
-          >
-            AnimalHub
-          </Typography> */}
           <div>
             <h2>AnimalHub</h2>
           </div>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-
             <IconButton
               size="large"
               edge="end"
