@@ -3,7 +3,6 @@ import "./App.css";
 import BottomNav from "./Components/BottomNav/BottomNav";
 import Home from "./Components/Home/Home";
 import Sell from "./Components/SellAnimal/Sell";
-import Dashboard from "./Components/Admin/Dashboard";
 import SignUp from "./Components/Registration/SignUp";
 import TopNav from "./Components/TopNav/TopNav";
 import Account from "./Components/Account/Account";
@@ -26,7 +25,6 @@ const App = () => {
 
           <ProtectedRoute exact path="/sell" component={Sell} />
 
-          <ProtectedRoute exact path="/admin/dashboard" component={Dashboard} />
           <ProtectedRoute exact path="/account" component={Account} />
         </Switch>
         <Route exact path="/signup" component={SignUp} />

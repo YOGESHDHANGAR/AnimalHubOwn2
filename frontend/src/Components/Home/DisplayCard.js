@@ -9,11 +9,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { getMoreAnimals } from "../../Redux/actions/animalActions";
 import MetaData from "../../Metadata/Metadata";
 
-let count = 0;
 const DisplayCard = () => {
-  console.log(++count);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(2);
+  const [hsMor, setHsMor] = useState(true);
 
   const { animals, loading, error } = useSelector((state) => state.animals);
   const { milk, animalCategory, radius, rate, breedArr } = useSelector(
@@ -24,6 +23,7 @@ const DisplayCard = () => {
     dispatch(
       getMoreAnimals(currentPage, milk, animalCategory, radius, rate, breedArr)
     );
+    // setHsMor(animalsCount > animals.length);
   };
   useEffect(() => {
     if (error) {

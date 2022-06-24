@@ -43,8 +43,6 @@ exports.createAnimal = catchAsyncErrors(async (req, res, next) => {
 
   const animal = await Animal.create(req.body);
 
-  console.log("created new animal" + animal);
-
   res.status(201).json({
     success: true,
     animal,
@@ -69,7 +67,7 @@ exports.getAllAnimals = catchAsyncErrors(async (req, res, next) => {
 
   // skipping through pagination
   if (req.query.currentPage) {
-    console.log("page:" + req.query.currentPage);
+    // console.log("page:" + req.query.currentPage);
   }
 
   const currentPage = req.query.currentPage || 1;
@@ -88,20 +86,6 @@ exports.getAllAnimals = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Get Animals  (Admin)
-exports.getAdminAnimals = catchAsyncErrors(async (req, res, next) => {
-  const copyAnimalCategoryArr = [...animalCategoryArr];
-  const adminAnimalsCount = await Animal.aggregate([
-    {
-      $count: "adminAnimalsCount",
-    },
-  ]);
-  res.status(200).json({
-    success: true,
-    adminAnimalsCount: adminAnimalsCount[0].adminAnimalsCount,
-  });
-});
-
 // Get Animal Details
 exports.getAnimalDetails = catchAsyncErrors(async (req, res, next) => {
   const animal = await Animal.findById(req.params.id);
@@ -109,58 +93,6 @@ exports.getAnimalDetails = catchAsyncErrors(async (req, res, next) => {
   if (!animal) {
     return next(new ErrorHandler("Product not found", 404));
   }
-
-  res.status(200).json({
-    success: true,
-    animal,
-  });
-});
-
-// Update Animal -- Admin
-
-exports.updateAnimal = catchAsyncErrors(async (req, res, next) => {
-  let animal = await Animal.findById(req.params.id);
-
-  if (!animal) {
-    return next(new ErrorHandler("Product not found", 404));
-  }
-
-  // Images Start Here
-  let images = [];
-
-  if (typeof req.body.images === "string") {
-    images.push(req.body.images);
-  } else {
-    images = req.body.images;
-  }
-
-  if (images !== undefined) {
-    // Deleting Images From Cloudinary
-    for (let i = 0; i < animal.images.length; i++) {
-      await cloudinary.v2.uploader.destroy(animal.images[i].public_id);
-    }
-
-    const imagesLinks = [];
-
-    for (let i = 0; i < images.length; i++) {
-      const result = await cloudinary.v2.uploader.upload(images[i], {
-        folder: "products",
-      });
-
-      imagesLinks.push({
-        public_id: result.public_id,
-        url: result.secure_url,
-      });
-    }
-
-    req.body.images = imagesLinks;
-  }
-
-  product = await Animal.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-    useFindAndModify: false,
-  });
 
   res.status(200).json({
     success: true,

@@ -4,7 +4,6 @@ import {
   ALL_ANIMAL_FAIL,
   ALL_ANIMAL_REQUEST,
   ALL_ANIMAL_SUCCESS,
-  ADMIN_ANIMAL_REQUEST,
   ADMIN_ANIMAL_SUCCESS,
   ADMIN_ANIMAL_FAIL,
   NEW_ANIMAL_REQUEST,
@@ -81,7 +80,7 @@ export const getAnimals =
         } else {
           str = "00000000000000000" + str;
         }
-        console.log("string" + str);
+        // console.log("string" + str);
         link = link + `breed=${str}&`;
       }
       link = link.slice(0, -1);
@@ -142,13 +141,13 @@ export const getMoreAnimals =
         } else {
           str = "00000000000000000" + str;
         }
-        console.log("string" + str);
+        // console.log("string" + str);
 
         link = link + `breed=${str}&`;
       }
 
       link = link.slice(0, -1);
-      console.log("link2" + link);
+      // console.log("link2" + link);
       let cancelToken;
       if (typeof cancelToken != typeof undefined) {
         cancelToken.cancel("Canceling the previos request");
@@ -170,30 +169,6 @@ export const getMoreAnimals =
       });
     }
   };
-
-// Get All Animals For Admin
-export const getAdminAnimals = () => async (dispatch) => {
-  try {
-    dispatch({ type: ADMIN_ANIMAL_REQUEST });
-
-    // const { data } = await axios.get("/api/v1/admin/animals");
-    let link = `http://localhost:4000/api/v1/admin/animals`;
-    if (process.env.NODE_ENV === "production") {
-      link = `/api/v1/admin/animals`;
-    }
-
-    const { data } = await axios.get(link);
-    dispatch({
-      type: ADMIN_ANIMAL_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: ADMIN_ANIMAL_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
 
 // Create Animal
 export const createAnimal = (myForm) => async (dispatch) => {
@@ -217,57 +192,6 @@ export const createAnimal = (myForm) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: NEW_ANIMAL_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
-
-// Update Animal --Admin
-export const updateAnimal = (id, animalData) => async (dispatch) => {
-  try {
-    dispatch({ type: UPDATE_ANIMAL_REQUEST });
-
-    const config = {
-      headers: { "Content-Type": "application/json" },
-    };
-
-    let link = `http://localhost:4000/api/v1/admin/animal/${id}`;
-    if (process.env.NODE_ENV === "production") {
-      link = `/api/v1/admin/animal/${id}`;
-    }
-
-    const { data } = await axios.put(link, animalData, config);
-
-    dispatch({
-      type: UPDATE_ANIMAL_SUCCESS,
-      payload: data.success,
-    });
-  } catch (error) {
-    dispatch({
-      type: UPDATE_ANIMAL_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
-
-// Delete Animal --Admin
-export const deleteAnimal = (id) => async (dispatch) => {
-  try {
-    dispatch({ type: DELETE_ANIMAL_REQUEST });
-    let link = `http://localhost:4000/api/v1/admin/animal/${id}`;
-    if (process.env.NODE_ENV === "production") {
-      link = `/api/v1/admin/animal/${id}`;
-    }
-
-    const { data } = await axios.delete(link);
-
-    dispatch({
-      type: DELETE_ANIMAL_SUCCESS,
-      payload: data.success,
-    });
-  } catch (error) {
-    dispatch({
-      type: DELETE_ANIMAL_FAIL,
       payload: error.response.data.message,
     });
   }
