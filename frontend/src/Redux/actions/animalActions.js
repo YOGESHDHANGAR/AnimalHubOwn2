@@ -44,7 +44,8 @@ export const getQueries =
 
 // Get All animals
 export const getAnimals =
-  (currentPage, milk, animalCategory, radius, rate, breedArr) => async (dispatch) => {
+  (currentPage, milk, animalCategory, radius, rate, breedArr) =>
+  async (dispatch) => {
     try {
       dispatch({ type: ALL_ANIMAL_REQUEST });
       let link = `http://localhost:4000/api/v1/animals?`;
@@ -84,7 +85,7 @@ export const getAnimals =
         link = link + `breed=${str}&`;
       }
       link = link.slice(0, -1);
-      console.log("link1" + link);
+      // console.log("link1" + link);
 
       const { data } = await axios.get(link);
 
@@ -102,7 +103,8 @@ export const getAnimals =
 
 //get More Animals After scrolling
 export const getMoreAnimals =
-  (currentPage, milk, animalCategory, radius, rate, breedArr) => async (dispatch) => {
+  (currentPage, milk, animalCategory, radius, rate, breedArr) =>
+  async (dispatch) => {
     try {
       dispatch({ type: LOAD_MORE_ANIMAL_REQUEST });
       // let link = `/api/v1/animals?`;

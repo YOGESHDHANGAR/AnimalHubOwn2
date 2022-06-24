@@ -5,17 +5,14 @@ import {
   MDBCardTitle,
   MDBCardText,
   MDBCardImage,
-  MDBBtn,
   MDBCardFooter,
 } from "mdb-react-ui-kit";
-import { Button } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import CallIcon from "@mui/icons-material/Call";
 import ReactWhatsapp from "react-whatsapp";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "./Style/Card2.css";
 const Card = (props) => {
-  console.log(props.gender);
   return (
     <div className="card_div ">
       <MDBCard style={{ maxWidth: "90vw" }} className="card_div_mdb2 ">
@@ -54,7 +51,7 @@ const Card = (props) => {
 
           <div className="contact_links">
             <div className="call_link  text-center">
-              <a href="tel:9617266124" className="me-3">
+              <a href="tel:9165607505" className="me-3">
                 <button className="btn btn-primary">
                   <CallIcon />
                 </button>
@@ -62,7 +59,7 @@ const Card = (props) => {
             </div>
             <div className="whatsapp_link">
               <ReactWhatsapp
-                number="+91-8817897211"
+                number="+91-9165607505"
                 message="Hello World!!!"
                 className="btn btn-success"
               >
